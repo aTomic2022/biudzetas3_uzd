@@ -3,12 +3,12 @@ import java.time.LocalDateTime;
 
 public class IslaiduIrasas {
     private float suma;
-    private LocalDateTime dataLaikas;
+    private String dataLaikas;
     private String kategorija;
     private String atsiskaitymoBudas;
     private String papildomaInfo;
 
-    public IslaiduIrasas(float suma, LocalDateTime dataLaikas, String kategorija, String atsiskaitymoBudas, String papildomaInfo) {
+    public IslaiduIrasas(float suma, String dataLaikas, String kategorija, String atsiskaitymoBudas, String papildomaInfo) {
         this.suma = suma;
         this.dataLaikas = dataLaikas;
         this.kategorija = kategorija;
@@ -51,7 +51,7 @@ public class IslaiduIrasas {
         this.papildomaInfo = papildomaInfo;
     }
 
-    public LocalDateTime getDataLaikas() {
+    public String getDataLaikas() {
         return dataLaikas;
     }
 }
