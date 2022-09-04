@@ -7,13 +7,24 @@ public class IslaiduIrasas {
     private String kategorija;
     private String atsiskaitymoBudas;
     private String papildomaInfo;
+    static int countas;
+    private int counter;
 
-    public IslaiduIrasas(float suma, String dataLaikas, String kategorija, String atsiskaitymoBudas, String papildomaInfo) {
+    public IslaiduIrasas(float suma, String dataLaikas, String kategorija, String atsiskaitymoBudas, String papildomaInfo, int counter) {
         this.suma = suma;
         this.dataLaikas = dataLaikas;
         this.kategorija = kategorija;
         this.atsiskaitymoBudas = atsiskaitymoBudas;
         this.papildomaInfo = papildomaInfo;
+        this.counter = counter;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 
     public IslaiduIrasas(float suma, LocalDate data, String kategorija, boolean arIbanka, String papildomaInfo) {

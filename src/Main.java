@@ -39,9 +39,17 @@ public class Main {
                     b1.visosIslaidos();
                 }
                 case 8 -> {
+                    b1.trintiPajamuIrasa();
+                }
+                case 9 -> {
+                    b1.trintiIslaiduIrasa();
+                }
+
+                case 10 -> {
                     runProgram = false;
                     input.close();
                 }
+
 
                 default -> System.out.println("komanda [" + choise + "] nepalaikoma");
             }
@@ -61,7 +69,9 @@ public class Main {
                  5. Sužinokite balansą spauskite <5>
                  6. Visos pajamos spauskite <6>
                  7. Visos išlaidos spauskite <7>
-                 8. Išeiti spauskite <8>"""
+                 8. Ištrinti pajamų įrašą spauskite <8>
+                 9. Ištrinti išlaidų įrašą spauskite <9>
+                 10. Išeiti spauskite <10>"""
         );
     }
 
