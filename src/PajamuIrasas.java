@@ -6,14 +6,25 @@ public class PajamuIrasas {
     private String kategorija;
     private boolean pozymisaArIbanka;
     private String papildomaInfo;
+    static int countas;
+    private int count;
 
 
-    public PajamuIrasas(float suma, String data, String kategorija, boolean pozymisaArIbanka, String papildomaInfo) {
+    public PajamuIrasas(float suma, String data, String kategorija, boolean pozymisaArIbanka, String papildomaInfo, int count) {
         this.suma = suma;
         this.data = data;
         this.kategorija = kategorija;
         this.pozymisaArIbanka = pozymisaArIbanka;
         this.papildomaInfo = papildomaInfo;
+        this.count = count;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public float getSuma() {
