@@ -30,9 +30,13 @@ public class Main {
                     b1.gautiIslaiduIrasa(islaiduNr - 1);
                 }
                 case 5 -> {
+                    b1.balansas();
+                }
+                case 6 -> {
                     runProgram = false;
                     input.close();
                 }
+
                 default -> System.out.println("komanda [" + choise + "] nepalaikoma");
             }
 
@@ -48,7 +52,8 @@ public class Main {
                  2. Norite įvesti išlaidas spauskite <2>
                  3. Sužinokite kiek gavote pajamų spauskite <3>
                  4. Sužinokite kiek išleidote spauskite <4>
-                 5. Išeiti spauskite <5>"""
+                 5. Sužinokite balansą spauskite <5>
+                 6. Išeiti spauskite <6>"""
         );
     }
 

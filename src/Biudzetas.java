@@ -57,5 +57,18 @@ public class Biudzetas {
                 islaiduIrasasArrayList.get(i).getKategorija() + "\nAtsiskaitymo būdas: " + islaiduIrasasArrayList.get(i).getAtsiskaitymoBudas() + "\nPapildoma informacija: " + islaiduIrasasArrayList.get(i).getPapildomaInfo());
         System.out.println();
     }
+    public void balansas(){
+        double pajamuSuma = 0;
+        double islaiduSuma = 0;
+        double balansas;
+        for (int i = 0; i < pajamuIrasasArrayList.size(); i++) {
+            pajamuSuma = pajamuSuma + pajamuIrasasArrayList.get(i).getSuma();
+        }
+        for (int i = 0; i < islaiduIrasasArrayList.size(); i++) {
+            islaiduSuma = islaiduSuma + islaiduIrasasArrayList.get(i).getSuma();
+        }
+        balansas = pajamuSuma - islaiduSuma;
+        System.out.println("Balansas => " + balansas);
+    }
 
 }
