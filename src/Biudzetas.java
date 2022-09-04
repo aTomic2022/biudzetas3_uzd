@@ -54,16 +54,16 @@ public class Biudzetas {
         System.out.println("Pridėtas išlaidų įrašas");
         System.out.println();
     }
-public void gautiPajamuIrasa(int i){
-    System.out.println("Suma: " + pajamos[i].getSuma() + "\nData: " + pajamos[i].getData() + "\nKategorija: "+
-    pajamos[i].getKategorija() + "\nĮ banką: "+ pajamos[i].isPozymisaArIbanka() +"\nPapildoma informacija: " + pajamos[i].getPapildomaInfo());
-    System.out.println();
-}
+    public void gautiPajamuIrasa(int i){
+        System.out.println("Suma: " + pajamos[i].getSuma() + "\nData: " + pajamos[i].getData() + "\nKategorija: "+
+                pajamos[i].getKategorija() + "\nĮ banką: "+ pajamos[i].isPozymisaArIbanka() +"\nPapildoma informacija: " + pajamos[i].getPapildomaInfo());
+        System.out.println();
+    }
 
-public void gautiIslaiduIrasa(int i){
-    System.out.println("Suma: " + islaidos[i].getSuma() + "\nData: " + islaidos[i].getDataLaikas() + "\nKategorija: "+
-    islaidos[i].getKategorija() + "\nAtsiskaitymo būdas: "+ islaidos[i].getAtsiskaitymoBudas() +"\nPapildoma informacija: " + pajamos[i].getPapildomaInfo());
-    System.out.println();
-}
+    public void gautiIslaiduIrasa(int i){
+        System.out.println("Suma: " + islaidos[i].getSuma() + "\nData: " + islaidos[i].getDataLaikas() + "\nKategorija: "+
+                islaidos[i].getKategorija() + "\nAtsiskaitymo būdas: "+ islaidos[i].getAtsiskaitymoBudas() +"\nPapildoma informacija: " + islaidos[i].getPapildomaInfo());
+        System.out.println();
+    }
 
 }
