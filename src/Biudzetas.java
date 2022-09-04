@@ -2,11 +2,13 @@ import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Biudzetas {
-    PajamuIrasas[] pajamos = new PajamuIrasas[100];
-    IslaiduIrasas[] islaidos = new IslaiduIrasas[100];
+
+    ArrayList<PajamuIrasas> pajamuIrasasArrayList = new ArrayList<>();
+    ArrayList<IslaiduIrasas> islaiduIrasasArrayList = new ArrayList<>();
 
     public void pridetiPajamuIrasa() {
         Scanner sc = new Scanner(System.in);
@@ -20,14 +22,7 @@ public class Biudzetas {
         System.out.println("Įvesk papildomą informaciją:");
         String papildomaInfo = sc.next();
         PajamuIrasas pajamuI = new PajamuIrasas(suma, data, kategorija, arIbanka, papildomaInfo);
-
-        for (int i = 0; i < pajamos.length; i++) {
-            PajamuIrasas pajamuObjektas = pajamos[i];
-            if (pajamuObjektas == null) {
-                pajamos[i] = pajamuI;
-                break;
-            }
-        }
+        pajamuIrasasArrayList.add(pajamuI);
         System.out.println("Pridėtas pajamų įrašas");
 
     }
@@ -41,8 +36,6 @@ public class Biudzetas {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy MM dd HH:mm");
         String formatuotaData = dataLaikas.format(dtf);
-        System.out.println(formatuotaData);
-
         System.out.println("Įveskite kategoriją: ");
         String kategorija = sc.next();
         System.out.println("Įveskite atsiskaitymo būdą");
@@ -50,26 +43,18 @@ public class Biudzetas {
         System.out.println("Įvesk papildomą informaciją:");
         String papildomaInfo = sc.next();
         IslaiduIrasas islaiduI = new IslaiduIrasas(suma, formatuotaData, kategorija, atsikBudas, papildomaInfo);
-        for (int i = 0; i < islaidos.length; i++) {
-            IslaiduIrasas islaiduObjektas = islaidos[i];
-            if (islaiduObjektas == null) {
-                islaidos[i] = islaiduI;
-                break;
-            }
-        }
-        System.out.println("Pridėtas išlaidų įrašas");
-        System.out.println();
+        islaiduIrasasArrayList.add(islaiduI);
     }
 
     public void gautiPajamuIrasa(int i) {
-        System.out.println("Suma: " + pajamos[i].getSuma() + "\nData: " + pajamos[i].getData() + "\nKategorija: " +
-                pajamos[i].getKategorija() + "\nĮ banką: " + pajamos[i].isPozymisaArIbanka() + "\nPapildoma informacija: " + pajamos[i].getPapildomaInfo());
+        System.out.println("Suma: " + pajamuIrasasArrayList.get(i).getSuma() + "\nData: " + pajamuIrasasArrayList.get(i).getData() + "\nKategorija: " +
+                pajamuIrasasArrayList.get(i).getKategorija() + "\nĮ banką: " + pajamuIrasasArrayList.get(i).isPozymisaArIbanka() + "\nPapildoma informacija: " + pajamuIrasasArrayList.get(i).getPapildomaInfo());
         System.out.println();
     }
 
     public void gautiIslaiduIrasa(int i) {
-        System.out.println("Suma: " + islaidos[i].getSuma() + "\nData: " + islaidos[i].getDataLaikas() + "\nKategorija: " +
-                islaidos[i].getKategorija() + "\nAtsiskaitymo būdas: " + islaidos[i].getAtsiskaitymoBudas() + "\nPapildoma informacija: " + islaidos[i].getPapildomaInfo());
+        System.out.println("Suma: " + islaiduIrasasArrayList.get(i).getSuma() + "\nData: " + islaiduIrasasArrayList.get(i).getDataLaikas() + "\nKategorija: " +
+                islaiduIrasasArrayList.get(i).getKategorija() + "\nAtsiskaitymo būdas: " + islaiduIrasasArrayList.get(i).getAtsiskaitymoBudas() + "\nPapildoma informacija: " + islaiduIrasasArrayList.get(i).getPapildomaInfo());
         System.out.println();
     }
 
