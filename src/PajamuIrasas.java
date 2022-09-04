@@ -2,13 +2,13 @@ import java.time.LocalDate;
 
 public class PajamuIrasas {
     private float suma;
-    private LocalDate data;
+    private String data;
     private String kategorija;
     private boolean pozymisaArIbanka;
     private String papildomaInfo;
 
 
-    public PajamuIrasas(float suma, LocalDate data, String kategorija, boolean pozymisaArIbanka, String papildomaInfo) {
+    public PajamuIrasas(float suma, String data, String kategorija, boolean pozymisaArIbanka, String papildomaInfo) {
         this.suma = suma;
         this.data = data;
         this.kategorija = kategorija;
@@ -24,13 +24,10 @@ public class PajamuIrasas {
         this.suma = suma;
     }
 
-    public LocalDate getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
 
     public String getKategorija() {
         return kategorija;
@@ -40,7 +37,7 @@ public class PajamuIrasas {
         this.kategorija = kategorija;
     }
 
-    public boolean isPozymisaArIbanka() {
+    public boolean getPozymisaArIbanka() {
         return pozymisaArIbanka;
     }
 

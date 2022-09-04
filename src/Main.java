@@ -33,6 +33,12 @@ public class Main {
                     b1.balansas();
                 }
                 case 6 -> {
+                    b1.visosPajamos();
+                }
+                case 7 -> {
+                    b1.visosIslaidos();
+                }
+                case 8 -> {
                     runProgram = false;
                     input.close();
                 }
@@ -53,7 +59,9 @@ public class Main {
                  3. Sužinokite kiek gavote pajamų spauskite <3>
                  4. Sužinokite kiek išleidote spauskite <4>
                  5. Sužinokite balansą spauskite <5>
-                 6. Išeiti spauskite <6>"""
+                 6. Visos pajamos spauskite <6>
+                 7. Visos išlaidos spauskite <7>
+                 8. Išeiti spauskite <8>"""
         );
     }
 
