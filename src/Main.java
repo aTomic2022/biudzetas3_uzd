@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Biudzetas b1 = new Biudzetas();
+
         Scanner input = new Scanner(System.in);
         boolean runProgram = true;
         int pajamuIrasuKiekis = 0;
@@ -12,7 +13,10 @@ public class Main {
             int choise = input.nextInt();
             switch (choise) {
                 case 1 -> {
-                    b1.pridetiPajamuIrasa();
+
+                    Irasas pajamuIrasas = null;
+                    b1.pridetiIrasa(pajamuIrasas);
+//                    b1.pridetiPajamuIrasa();
                     pajamuIrasuKiekis++;
                 }
                 case 2 -> {
@@ -44,13 +48,10 @@ public class Main {
                 case 9 -> {
                     b1.trintiIslaiduIrasa();
                 }
-
                 case 10 -> {
                     runProgram = false;
                     input.close();
                 }
-
-
                 default -> System.out.println("komanda [" + choise + "] nepalaikoma");
             }
 

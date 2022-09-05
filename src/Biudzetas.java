@@ -1,6 +1,3 @@
-import java.nio.charset.StandardCharsets;
-import java.sql.SQLOutput;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -8,26 +5,58 @@ import java.util.Scanner;
 
 public class Biudzetas {
 
-    ArrayList<PajamuIrasas> pajamuIrasasArrayList = new ArrayList<>();
-    ArrayList<IslaiduIrasas> islaiduIrasasArrayList = new ArrayList<>();
+    ArrayList<Irasas> list = new ArrayList<Irasas>();
     Scanner sc = new Scanner(System.in);
 
+    public void pridetiIrasa(Irasas irasas) {
+        System.out.println("Įvesk suma:");
+        float suma = sc.nextFloat();
+        LocalDateTime data = LocalDateTime.now();
+        System.out.println("Įvesk papildomą informaciją:");
+        String papildomaInfo = sc.next();
+        if (irasas instanceof PajamuIrasas) {
+//            list.add((PajamuIrasas) irasas);
+            System.out.println("Ivesk kategorija:");
+            String pajamuKategorija = sc.next();
+            System.out.println("pasirink ar į banką (jei taip įvedame <true>, jei ne <false>):");
+            boolean arIbanka = sc.nextBoolean();
+            System.out.println("Įveskite pajamų tipą:");
+            String pajamuTipas = sc.next();
+            int counter = PajamuIrasas.countas++;
+            Irasas pajamuI = new PajamuIrasas(suma, data, papildomaInfo, counter, arIbanka, pajamuKategorija, pajamuTipas);
+            list.add(pajamuI);
+            System.out.println("Pridėtas pajamų įrašas");
+        } else if (irasas instanceof IslaiduIrasas) {
+            list.add((IslaiduIrasas) irasas);
+            System.out.println("Įveskite kategoriją: ");
+            String islaiduKategorija = sc.next();
+            System.out.println("Įveskite atsiskaitymo būdą");
+            String atsikBudas = sc.next();
+            System.out.println("Įveskite išlaidų tipą");
+            String islaiduTipas = sc.next();
+            int counter = IslaiduIrasas.countas++;
+            Irasas islaiduI = new IslaiduIrasas(suma, data, papildomaInfo, counter, atsikBudas, islaiduKategorija, islaiduTipas);
+            list.add(islaiduI);
+        }
+
+
+    }
 
     public void pridetiPajamuIrasa() {
         System.out.println("Įvesk suma:");
         float suma = sc.nextFloat();
-        LocalDate data = LocalDate.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formatuotaData = data.format(dtf);
+        LocalDateTime data = LocalDateTime.now();
         System.out.println("Ivesk kategorija:");
-        String kategorija = sc.next();
+        String pajamuKategorija = sc.next();
         System.out.println("pasirink ar į banką (jei taip įvedame <true>, jei ne <false>):");
         boolean arIbanka = sc.nextBoolean();
         System.out.println("Įvesk papildomą informaciją:");
         String papildomaInfo = sc.next();
+        System.out.println("Įveskite pajamų tipą:");
+        String pajamuTipas = sc.next();
         int counter = PajamuIrasas.countas++;
-        PajamuIrasas pajamuI = new PajamuIrasas(suma, formatuotaData, kategorija, arIbanka, papildomaInfo, counter);
-        pajamuIrasasArrayList.add(pajamuI);
+        Irasas pajamuI = new PajamuIrasas(suma, data, papildomaInfo, counter, arIbanka, pajamuKategorija, pajamuTipas);
+        list.add(pajamuI);
         System.out.println("Pridėtas pajamų įrašas");
 
     }
@@ -36,30 +65,38 @@ public class Biudzetas {
     public void pridetiIslaiduIrasa() {
         System.out.println("Įvesk sumą: ");
         float suma = sc.nextFloat();
-        LocalDateTime dataLaikas = LocalDateTime.now();
+        LocalDateTime data = LocalDateTime.now();
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        String formatuotaDataLaikas = dataLaikas.format(dtf);
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+//        String formatuotaDataLaikas = dataLaikas.format(dtf);
         System.out.println("Įveskite kategoriją: ");
-        String kategorija = sc.next();
+        String islaiduKategorija = sc.next();
         System.out.println("Įveskite atsiskaitymo būdą");
         String atsikBudas = sc.next();
         System.out.println("Įvesk papildomą informaciją:");
         String papildomaInfo = sc.next();
         int counter = IslaiduIrasas.countas++;
-        IslaiduIrasas islaiduI = new IslaiduIrasas(suma, formatuotaDataLaikas, kategorija, atsikBudas, papildomaInfo, counter);
-        islaiduIrasasArrayList.add(islaiduI);
+        System.out.println("Įveskite išlaidų tipą");
+        String islaiduTipas = sc.next();
+        Irasas islaiduI = new IslaiduIrasas(suma, data, papildomaInfo, counter, atsikBudas, islaiduKategorija, islaiduTipas);
+        list.add(islaiduI);
     }
 
     public void gautiPajamuIrasa(int i) {
-        System.out.println("Suma: " + pajamuIrasasArrayList.get(i).getSuma() + "\nData: " + pajamuIrasasArrayList.get(i).getData() + "\nKategorija: " +
-                pajamuIrasasArrayList.get(i).getKategorija() + "\nĮ banką: " + pajamuIrasasArrayList.get(i).getPozymisaArIbanka() + "\nPapildoma informacija: " + pajamuIrasasArrayList.get(i).getPapildomaInfo());
+        System.out.println("Suma: " + list.get(i).getSuma()
+                + "\nData: " + list.get(i).getData()
+//                + "\nKategorija: " + ((PajamuIrasas) i).getPajamuKategorija()
+//                + "\nĮ banką: " + ((PajamuIrasas) i).getPozymisaArIbanka()
+                + "\nPapildoma informacija: " + list.get(i).getPapildomaInfo());
         System.out.println();
     }
 
     public void gautiIslaiduIrasa(int i) {
-        System.out.println("Suma: " + islaiduIrasasArrayList.get(i).getSuma() + "\nData: " + islaiduIrasasArrayList.get(i).getDataLaikas() + "\nKategorija: " +
-                islaiduIrasasArrayList.get(i).getKategorija() + "\nAtsiskaitymo būdas: " + islaiduIrasasArrayList.get(i).getAtsiskaitymoBudas() + "\nPapildoma informacija: " + islaiduIrasasArrayList.get(i).getPapildomaInfo());
+        System.out.println("Suma: " + list.get(i).getSuma()
+                + "\nData: " + list.get(i).getData()
+//                + "\nKategorija: " + list.get(i).getKategorija()
+//                + "\nAtsiskaitymo būdas: " + list.get(i).getAtsiskaitymoBudas()
+                + "\nPapildoma informacija: " + list.get(i).getPapildomaInfo());
         System.out.println();
     }
 
@@ -67,39 +104,39 @@ public class Biudzetas {
         double pajamuSuma = 0;
         double islaiduSuma = 0;
         double balansas;
-        for (int i = 0; i < pajamuIrasasArrayList.size(); i++) {
-            pajamuSuma = pajamuSuma + pajamuIrasasArrayList.get(i).getSuma();
+        for (int i = 0; i < list.size(); i++) {
+            pajamuSuma = pajamuSuma + list.get(i).getSuma();
         }
-        for (int i = 0; i < islaiduIrasasArrayList.size(); i++) {
-            islaiduSuma = islaiduSuma + islaiduIrasasArrayList.get(i).getSuma();
+        for (int i = 0; i < list.size(); i++) {
+            islaiduSuma = islaiduSuma + list.get(i).getSuma();
         }
         balansas = pajamuSuma - islaiduSuma;
         System.out.println("Balansas => " + balansas);
     }
 
     public void visosPajamos() {
-        for (int i = 0; i < pajamuIrasasArrayList.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             String pajamuIsvedimas = String.format("Pajamos: %,.2f EUR, -> data:%s, kategorija - %s, pozymis - %b, info - %s, unikalus numeris - %d",
-                    pajamuIrasasArrayList.get(i).getSuma(),
-                    pajamuIrasasArrayList.get(i).getData(),
-                    pajamuIrasasArrayList.get(i).getKategorija(),
-                    pajamuIrasasArrayList.get(i).getPozymisaArIbanka(),
-                    pajamuIrasasArrayList.get(i).getPapildomaInfo(),
-                    pajamuIrasasArrayList.get(i).getCount());
+                    list.get(i).getSuma(),
+                    list.get(i).getData(),
+//                    list.get(i).getKategorija(),
+//                    list.get(i).getPozymisaArIbanka(),
+                    list.get(i).getPapildomaInfo(),
+                    list.get(i).getCounter());
 
             System.out.println(pajamuIsvedimas);
         }
     }
 
     public void visosIslaidos() {
-        for (int i = 0; i < islaiduIrasasArrayList.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             String islaiduIsvedimas = String.format("Išlaidos: %,.2f EUR -> data: %s, kategorija - %s, atsiskaitymas - %s, info - %s, unikalus numeris - %d",
-                    islaiduIrasasArrayList.get(i).getSuma(),
-                    islaiduIrasasArrayList.get(i).getDataLaikas(),
-                    islaiduIrasasArrayList.get(i).getKategorija(),
-                    islaiduIrasasArrayList.get(i).getAtsiskaitymoBudas(),
-                    islaiduIrasasArrayList.get(i).getPapildomaInfo(),
-                    islaiduIrasasArrayList.get(i).getCounter());
+                    list.get(i).getSuma(),
+                    list.get(i).getData(),
+//                    list.get(i).getKategorija(),
+//                    list.get(i).getAtsiskaitymoBudas(),
+                    list.get(i).getPapildomaInfo(),
+                    list.get(i).getCounter());
             System.out.println(islaiduIsvedimas);
 
         }
@@ -113,9 +150,9 @@ public class Biudzetas {
             sc.next();
         }
         int skP = sc.nextInt();
-        for (int i = 0; i < pajamuIrasasArrayList.size(); i++) {
-            if (pajamuIrasasArrayList.get(i).getCount() == skP) {
-                pajamuIrasasArrayList.remove(i);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCounter() == skP) {
+                list.remove(i);
                 System.out.println("Pajamų įrašas [" + skP + "] pašalintas");
             }
         }
@@ -129,9 +166,9 @@ public class Biudzetas {
             sc.next();
         }
         int skI = sc.nextInt();
-        for (int i = 0; i < islaiduIrasasArrayList.size(); i++) {
-            if (islaiduIrasasArrayList.get(i).getCounter() == skI) {
-                islaiduIrasasArrayList.remove(i);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCounter() == skI) {
+                list.remove(i);
                 System.out.println("Išlaidų įrašas [" + skI + "] pašalintas");
             }
 

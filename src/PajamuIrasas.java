@@ -1,54 +1,20 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class PajamuIrasas {
-    private float suma;
-    private String data;
-    private String kategorija;
+public class PajamuIrasas extends Irasas{
     private boolean pozymisaArIbanka;
-    private String papildomaInfo;
-    static int countas;
-    private int count;
+    private String pajamuKategorija;
+    private String pajamuTipas;
 
-
-    public PajamuIrasas(float suma, String data, String kategorija, boolean pozymisaArIbanka, String papildomaInfo, int count) {
-        this.suma = suma;
-        this.data = data;
-        this.kategorija = kategorija;
+    public PajamuIrasas(float suma, LocalDateTime data, String papildomaInfo, int counter, boolean pozymisaArIbanka, String pajamuKategorija, String pajamuTipas) {
+        super(suma, data, papildomaInfo, counter);
         this.pozymisaArIbanka = pozymisaArIbanka;
-        this.papildomaInfo = papildomaInfo;
-        this.count = count;
+        this.pajamuKategorija = pajamuKategorija;
+        this.pajamuTipas = pajamuTipas;
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public float getSuma() {
-        return suma;
-    }
-
-    public void setSuma(float suma) {
-        this.suma = suma;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-
-    public String getKategorija() {
-        return kategorija;
-    }
-
-    public void setKategorija(String kategorija) {
-        this.kategorija = kategorija;
-    }
-
-    public boolean getPozymisaArIbanka() {
+    public boolean isPozymisaArIbanka() {
         return pozymisaArIbanka;
     }
 
@@ -56,11 +22,29 @@ public class PajamuIrasas {
         this.pozymisaArIbanka = pozymisaArIbanka;
     }
 
-    public String getPapildomaInfo() {
-        return papildomaInfo;
+    public String getPajamuKategorija() {
+        return pajamuKategorija;
     }
 
-    public void setPapildomaInfo(String papildomaInfo) {
-        this.papildomaInfo = papildomaInfo;
+    public void setPajamuKategorija(String pajamuKategorija) {
+        this.pajamuKategorija = pajamuKategorija;
     }
+
+    public String getPajamuTipas() {
+        return pajamuTipas;
+    }
+
+    public void setPajamuTipas(String pajamuTipas) {
+        this.pajamuTipas = pajamuTipas;
+    }
+
+    @Override
+    public String toString() {
+        return "PajamuIrasas{" +
+                "pozymisaArIbanka=" + pozymisaArIbanka +
+                ", pajamuKategorija='" + pajamuKategorija + '\'' +
+                ", pajamuTipas='" + pajamuTipas + '\'' +
+                '}';
+    }
+
 }
